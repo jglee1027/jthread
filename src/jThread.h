@@ -1,6 +1,11 @@
+#ifndef _JTHREAD_H_
+#define _JTHREAD_H_
+
 #include <pthread.h>
 
 #include "jRunnable.h"
+
+struct NativeThread;
 
 class jThread : public jRunnable
 {
@@ -12,10 +17,11 @@ public:
 	void			start();
 	void			join();
 	bool			isAlive();
-	
-private:
+
 	static jThread* currentThread();
-	
-	pthread_t		m_thread;
-	pthread_attr_t	m_attr;
-}; 
+
+private:
+	NativeThread*	m_native;
+};
+
+#endif /* _JTHREAD_H_ */

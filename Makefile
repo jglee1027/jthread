@@ -9,13 +9,14 @@ UNITTEST_LIBS = $(shell pkg-config --libs unittest++)
 library_name = libjthread.a
 source_files =									\
 	src/jRunnable.cpp							\
-	src/jThread.cpp
+	src/jThread-unix.cpp
 object_files = $(patsubst %.cpp, %.o, $(source_files))
 
 library_test = testjThread
 test_source_files =								\
-	test/main.cpp							\
+	test/main.cpp								\
 	test/testjThread.cpp
+
 test_object_files = $(patsubst %.cpp, %.o, $(test_source_files))
 
 all: $(library_test)
